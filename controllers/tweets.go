@@ -5,6 +5,7 @@ import (
 	"github.com/labstack/echo"
 	"my-go-microblog-sample/helpers"
 	"my-go-microblog-sample/models"
+	"log"
 )
 
 var (
@@ -22,6 +23,9 @@ type TweetsController struct {
 
 func (controller *TweetsController) createTweet(c echo.Context) error {
 	c.Request().ParseForm()
+
+	// logging form
+	log.Print(c.Request().Form)
 
 	tweet := &models.Tweet{}
 	tweet.SetAttributes(c.Request().Form)
