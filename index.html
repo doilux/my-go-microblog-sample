@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>My Timeline</title>
+
+    <!-- bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- vue.js -->
+    <script src="http://unpkg.com/vue/dist/vue.js"></script>
+
+    <!-- jQuery -->
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+
+    <!-- bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+
+<div id="app" class="container">
+    <!-- col-xx カラム col-xx-offset 右にどれだけずらすか -->
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+        <div class="form-group">
+            <textarea class="form-control" placeholder="What's new" rows="3" v-model="newTweet"></textarea>
+        </div>
+        <button class="btn btn-primary btn-sm pull-right" v-on:click="postTweet">Tweet</button>
+
+        <hr>
+
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action" v-for="tweet in tweets">
+                <div class="media-body">
+                    <p>
+                    {{ tweet.body }}
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<script src="/static/app.js"></script>
+</body>
+</html>
