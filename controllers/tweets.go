@@ -17,15 +17,13 @@ var (
 
 // TweetsController is the Tweet controller.
 type TweetsController struct {
-	// 埋め込み型。TweetsControllerがRouter型を内包
 	Router *echo.Router
 }
 
-// メッセージを作る
 func (controller *TweetsController) createTweet(c echo.Context) error {
 	c.Request().ParseForm()
 
-	tweet := &models..{}
+	tweet := &models.Tweet{}
 	tweet.SetAttributes(c.Request().Form)
 
 	tweet.Save()
@@ -92,8 +90,6 @@ func (controller *TweetsController) deleteTweet(c echo.Context) error {
 }
 
 // Setup sets up routes for the Tweet controller.
-
-// routerから呼ばれているSetupはこれ
 func (controller *TweetsController) Setup() {
 	controller.Router.Add("POST", "/tweets", controller.createTweet)
 	controller.Router.Add("GET", "/tweets", controller.listTweets)
